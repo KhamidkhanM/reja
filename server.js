@@ -11,17 +11,19 @@ app.use(express.urlencoded({ extended: true }));
 
 // 2. View engine va views papkasini sozlash
 // 3.
-app.set("view engine", "ejs");
 app.set("views", "./views");
+app.set("view engine", "ejs");
+
 
 // 3. Routing
 // 4. Routing
-app.get("/hello", function (req, res) {
-    res.send("<h1>Hello, World by Me</h1>");
+app.post("/create-item", function (req, res) {
+    console.log(req.body);
+    res.json({ test: "success" });
 });
 
-app.get("/sovgalar", function (req, res) {
-    res.send("<h1>Siz sovgalar sahifasidasiz</h1>");
+app.get("/", function (req, res) {
+    res.send("harid");
 });
 
 const server = http.createServer(app);
