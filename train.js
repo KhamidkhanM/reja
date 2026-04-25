@@ -92,3 +92,22 @@ console.log("Passed here 1")
 //     console.log("Javob:", data);
 // }
 // run();
+
+
+
+
+
+// function countLetter(harf, soz) {
+//   let count = 0;
+  
+//   for (let i = 0; i < soz.length; i++) {
+//     if (soz[i] === harf) {
+//       count++;
+//     }
+//   }
+  
+//   return count;
+// }
+
+
+// console.log(countLetter("a", "banana"));   
