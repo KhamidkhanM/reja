@@ -1,4 +1,5 @@
-console.log("Web serverni boshlash");
+console.log("Server is starting...");
+
 const express = require("express");
 const app = express();
 const http = require("http");
@@ -13,41 +14,41 @@ fs.readFile("database/user.json", "utf8", (err, data) => {
     }
 });
 
-// Middleware
+let rejaList = [];
+
+// 1: Kirish code
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// View engine
-app.set("views", "./views");
+// 3: Views code
+app.set("views", "views");
 app.set("view engine", "ejs");
 
-// Routes
-app.get("/", function (req, res) {
-    res.render("harid", { reja: "Non, Sut, Tuxum, Yog'urt" });
-});
-
-app.get("/author", function (req, res) {
-    res.render("author", { user: user });
-});
-
-app.get("/doctor", function (req, res) {
-    res.render("doctor", { 
-        title: "Doctor Portfolio",
-        user: user 
-    });
-});
-
-app.post("/create-item", function (req, res) {
-    console.log(req.body);
+// 4 Routing code
+app.post("/create-item", (req, res) => {
     const newItem = req.body.item;
-    res.render("harid", { reja: `Yangi qo'shilgan: ${newItem}` });
+    rejaList.push(newItem);
+    res.render("reja", { user: user, rejaList: rejaList });
+});
+
+app.post("/delete-all", (req, res) => {
+    rejaList = [];
+    res.render("reja", { user: user, rejaList: rejaList });
+});
+
+app.get("/", function (req, res) {
+    res.render("reja", { user: user, rejaList: rejaList });
+});
+
+app.post("/delete-item", (req, res) => {
+    const item = req.body.item;
+    rejaList = rejaList.filter(i => i !== item);
+    res.render("reja", { user: user, rejaList: rejaList });
 });
 
 const server = http.createServer(app);
 let PORT = 3000;
 server.listen(PORT, function () {
-    console.log(`The server is running successfully on port ${PORT}`);
+    console.log(`The server is running successfully on port: ${PORT}, http://localhost:${PORT}`);
 });
-
-require('./train');
