@@ -2,7 +2,7 @@ const http = require("http");
 const mongodb = require("mongodb");
 
 let db;
-const connectionString = "mongodb://atlas-sql-69ef1d36c01470813b1edb51-yxkepp.a.query.mongodb.net/Reja?ssl=true&authSource=admin";
+const connectionString = "mongodb+srv://Khamid:Hamidkhanm77@cluster0.rmrhavl.mongodb.net/Reja";
 
 mongodb.connect(connectionString, 
     {
