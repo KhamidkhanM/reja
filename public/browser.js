@@ -3,7 +3,7 @@ console.log("Fronted js is running...");
 function itemTemplate(item) {
     return ` <li
                 class="list-group-item list-group-item-info d-flex align-items-center justify-content-between">
-              <span class="item-list">${item.reja}</span>
+              <span class="item-text">${item.reja}</span>
               <div>
               <button
                   data-id="${item._id}"
@@ -54,8 +54,27 @@ document.addEventListener("click", function (e) {
 
     //edit item
     if (e.target.classList.contains("edit-me")) {
-        if (confirm("Are you sure you want to edit this item?")) {
-        
+        let userInput = prompt("O'zgartirish uchun yangi matn kiriting:", e.target.parentElement.parentElement.querySelector(".item-text").innerHTML);
+        if (userInput) {
+            axios.post("/update-item", { id: e.target.getAttribute("data-id"), reja: userInput })
+            .then( response => {
+                console.log(response.data);
+                e.target.parentElement.parentElement.querySelector(".item-text").innerHTML = userInput;
+            })
+            .catch( err => {
+                console.log("Something went wrong. Please try again.");
+            });
         }
     }
 });    
+
+document.getElementById("delete-all").addEventListener("click", function () {
+    axios.post("/delete-all", { deleteAll: true }).then( response => {
+        console.log(response.data);
+        document.getElementById("item-list").innerHTML = "";
+    })
+     .catch( err => {
+        console.log("Something went wrong. Please try again.");
+     });    
+     document.location.reload();
+});

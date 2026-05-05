@@ -30,13 +30,21 @@ app.set("view engine", "ejs");
 app.post("/delete-item", (req, res) => {
     const id = req.body.id;
     db.collection("plans").deleteOne({ _id: new mongodb.ObjectID(id) }, (err, data) => {
+        if (err) return res.json({ state: "error" });
         res.json({ success: "success" });
+    });
+});
+app.post("/delete-all", (_req, res) => {
+    db.collection("plans").deleteMany({}, (err) => {
+        if (err) return res.redirect("/");
+        res.redirect("/");
     });
 });
 app.post("/create-item", (req, res) => {
    console.log(req.body);
    const new_reja = req.body.reja;
    db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
+    if (err) return res.json({ state: "error" });
     console.log(data.ops[0]);
     res.json(data.ops[0]);
    });
@@ -55,6 +63,29 @@ app.get("/", function (req, res) {
             res.render("reja", { items: data });
         }
     });
+});
+
+app.post("/update-item", (req, res) => {
+    // const id = req.body.id;
+    const data = req.body;
+    console.log(data);
+    db.collection("plans").findOneAndUpdate({ _id: new mongodb.ObjectID(data.id) }, { $set: { reja: data.reja } }, function (err, result) {        
+        if (err) {
+            console.log("Update error:", err);
+            return res.json({ state: "error" });
+        }
+        res.json({ state: "success" });
+    });
+    
+    //res.end("done");
+});
+
+app.post("/delete-all", (_req, res) => {
+    if (req.body.deleteAll) {
+        db.collection("plans").deleteMany(function(){
+            res.json({ state: "All deleted" });
+         });
+    }
 });
 
 app.get("/author", function (req, res) {

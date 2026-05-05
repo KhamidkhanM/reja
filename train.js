@@ -1,40 +1,50 @@
-//Task C
-
-class Shop {
-    constructor(non, lagmon, cola) {
-        this.non = non;
-        this.lagmon = lagmon;
-        this.cola = cola;
-    }
-
-    qoldiq() {
-        const now = new Date();
-        const time = now.getHours() + ":" + now.getMinutes();
-        console.log("Hozir " + time + "da " + this.non + "ta non, " + this.lagmon + "ta lag'mon va " + this.cola + "ta cola mavjud");
-    }
-
-    sotish(mahsulot, miqdor) {
-        if (mahsulot == "non") this.non -= miqdor;
-        if (mahsulot == "lagmon") this.lagmon -= miqdor;
-        if (mahsulot == "cola") this.cola -= miqdor;
-        console.log(miqdor + "ta " + mahsulot + " sotildi");
-    }
-
-    qabul(mahsulot, miqdor) {
-        if (mahsulot == "non") this.non += miqdor;
-        if (mahsulot == "lagmon") this.lagmon += miqdor;
-        if (mahsulot == "cola") this.cola += miqdor;
-        console.log(miqdor + "ta " + mahsulot + " qabul qilindi");
-    }
+//Task D:
+function checkContent(a, b) {
+    return a.split("").sort().join("") === b.split("").sort().join("");
 }
 
+console.log(checkContent("mitgroup", "gmtiprou")); 
+console.log(checkContent("hello", "world"));   
 
-const shop = new Shop(4, 5, 2);
+// I took hints from ai to solve this task, was hard for me.
 
-shop.qoldiq();
-shop.sotish("non", 3);
-shop.qabul("cola", 4);
-shop.qoldiq();
+//Task C
+
+// class Shop {
+//     constructor(non, lagmon, cola) {
+//         this.non = non;
+//         this.lagmon = lagmon;
+//         this.cola = cola;
+//     }
+
+//     qoldiq() {
+//         const now = new Date();
+//         const time = now.getHours() + ":" + now.getMinutes();
+//         console.log("Hozir " + time + "da " + this.non + "ta non, " + this.lagmon + "ta lag'mon va " + this.cola + "ta cola mavjud");
+//     }
+
+//     sotish(mahsulot, miqdor) {
+//         if (mahsulot == "non") this.non -= miqdor;
+//         if (mahsulot == "lagmon") this.lagmon -= miqdor;
+//         if (mahsulot == "cola") this.cola -= miqdor;
+//         console.log(miqdor + "ta " + mahsulot + " sotildi");
+//     }
+
+//     qabul(mahsulot, miqdor) {
+//         if (mahsulot == "non") this.non += miqdor;
+//         if (mahsulot == "lagmon") this.lagmon += miqdor;
+//         if (mahsulot == "cola") this.cola += miqdor;
+//         console.log(miqdor + "ta " + mahsulot + " qabul qilindi");
+//     }
+// }
+
+
+// const shop = new Shop(4, 5, 2);
+
+// shop.qoldiq();
+// shop.sotish("non", 3);
+// shop.qabul("cola", 4);
+// shop.qoldiq();
 
 //Task B
 // function countDigits(str) {
