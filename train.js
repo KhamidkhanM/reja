@@ -1,10 +1,17 @@
-//Task D:
-function checkContent(a, b) {
-    return a.split("").sort().join("") === b.split("").sort().join("");
+//Task E:
+function getReverse(str) {
+    return str.split("").reverse().join("");
 }
 
-console.log(checkContent("mitgroup", "gmtiprou")); 
-console.log(checkContent("hello", "world"));   
+console.log(getReverse("hello")); 
+
+//Task D:
+// function checkContent(a, b) {
+//     return a.split("").sort().join("") === b.split("").sort().join("");
+// }
+
+// console.log(checkContent("mitgroup", "gmtiprou")); 
+// console.log(checkContent("hello", "world"));   
 
 // I took hints from ai to solve this task, was hard for me.
 
