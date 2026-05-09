@@ -1,9 +1,25 @@
-//Task E:
-function getReverse(str) {
-    return str.split("").reverse().join("");
+//Task F:
+function findDoublers(str) {
+    for (let i = 0; i < str.length; i++) {
+        let char = str[i];
+        
+        if (str.indexOf(char) !== str.lastIndexOf(char)) {
+            return true;
+        }
+    }
+    return false;
 }
 
-console.log(getReverse("hello")); 
+console.log(findDoublers("hello"));
+
+
+
+//Task E:
+// function getReverse(str) {
+//     return str.split("").reverse().join("");
+// }
+
+// console.log(getReverse("hello")); 
 
 //Task D:
 // function checkContent(a, b) {
