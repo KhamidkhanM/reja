@@ -1,16 +1,24 @@
-//Task F:
-function findDoublers(str) {
-    for (let i = 0; i < str.length; i++) {
-        let char = str[i];
-        
-        if (str.indexOf(char) !== str.lastIndexOf(char)) {
-            return true;
-        }
-    }
-    return false;
+//task G:
+function getHighestIndex(arr) {
+    let max = Math.max(...arr);  // find the biggest number
+    return arr.indexOf(max);     // find its index
 }
 
-console.log(findDoublers("hello"));
+console.log(getHighestIndex([5, 21, 12, 21, 8])); 
+
+//Task F:
+// function findDoublers(str) {
+//     for (let i = 0; i < str.length; i++) {
+//         let char = str[i];
+        
+//         if (str.indexOf(char) !== str.lastIndexOf(char)) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
+
+// console.log(findDoublers("hello"));
 
 
 
