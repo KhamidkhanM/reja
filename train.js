@@ -1,10 +1,20 @@
-//task G:
-function getHighestIndex(arr) {
-    let max = Math.max(...arr);  // find the biggest number
-    return arr.indexOf(max);     // find its index
-}
+//Task H:
+def getPositive(arr):
+    result = ""
+    for num in arr:
+        if num > 0:
+            result += str(num)
+    return result
 
-console.log(getHighestIndex([5, 21, 12, 21, 8])); 
+print(getPositive([1, -4, 2])) 
+
+//task G:
+// function getHighestIndex(arr) {
+//     let max = Math.max(...arr);  // find the biggest number
+//     return arr.indexOf(max);     // find its index
+// }
+
+// console.log(getHighestIndex([5, 21, 12, 21, 8])); 
 
 //Task F:
 // function findDoublers(str) {
