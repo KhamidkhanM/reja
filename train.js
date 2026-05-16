@@ -1,12 +1,21 @@
-//Task H:
-def getPositive(arr):
-    result = ""
-    for num in arr:
-        if num > 0:
-            result += str(num)
-    return result
+//Task I:
+function majorityElement(arr) {
+    return arr.reduce((a, b) =>
+        arr.filter(x => x === a).length >= arr.filter(x => x === b).length ? a : b
+    );
+}
 
-print(getPositive([1, -4, 2])) 
+console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]));  
+
+//Task H:
+// def getPositive(arr):
+//     result = ""
+//     for num in arr:
+//         if num > 0:
+//             result += str(num)
+//     return result
+
+// print(getPositive([1, -4, 2])) 
 
 //task G:
 // function getHighestIndex(arr) {
