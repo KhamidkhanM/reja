@@ -1,11 +1,27 @@
-//Task I:
-function majorityElement(arr) {
-    return arr.reduce((a, b) =>
-        arr.filter(x => x === a).length >= arr.filter(x => x === b).length ? a : b
-    );
+//Task J
+function findLongestWord(str) {
+  const words = str.split(" ");
+  let longest = "";
+
+  for (let word of words) {
+    if (word.length > longest.length) {
+      longest = word;
+    }
+  }
+
+  return longest;
 }
 
-console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]));  
+console.log(findLongestWord("I came from Uzbekistan!")); 
+
+//Task I:
+// function majorityElement(arr) {
+//     return arr.reduce((a, b) =>
+//         arr.filter(x => x === a).length >= arr.filter(x => x === b).length ? a : b
+//     );
+// }
+
+// console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]));  
 
 //Task H:
 // def getPositive(arr):
